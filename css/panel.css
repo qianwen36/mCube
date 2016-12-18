@@ -1,4 +1,9 @@
-.floor_selector {
+@media screen and (orientation:portrait){
+	#floor_selector, #rotate_factor{
+		display: none;
+	}
+}
+#floor_selector {
 	position: absolute;
 	right: 0;
 	bottom: 0;
@@ -40,10 +45,10 @@
   /*background: #fff;*/
   border: 2px solid #ccc;
   position: absolute;
-  top: -18px;
-  left: -18px;
-  bottom: -18px;
-  right: -18px;
+  top: -20%;
+  left: -20%;
+  bottom: -20%;
+  right: -20%;
   z-index: -1;
   border-radius: 50%;
   box-shadow: inset 0px 8px 48px #ddd;
@@ -58,12 +63,16 @@
 }
 
 .simple a:link, .simple a:visited{
-	width: 36px;
-	height: 36px;
-	line-height: 36px;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
 }
 
+#simple_rorate{
+	position: relative;
+	left: -8%;
+}
 #contra_rorate {
 	position: relative;
-	left: -18%;
+	left: -32%;
 }

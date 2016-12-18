@@ -63,46 +63,13 @@
 	<script charset="utf-8" src="js/deviceMotion.js"></script>
 	<script charset="utf-8" src="js/main.js"></script>		
     <script charset="utf-8" src="js/mobiscroll.custom-2.6.2.min.js"></script>
+    <script charset="UTF-8" src="js/floor_operate.js"></script>
     <script type="text/javascript">
     	
    		document.addEventListener('plusready', function(){
    			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
    			
    		});
-        var floors_func = function (ul) {
-            var axis = ['x', 'y', 'z'];
-            var floor= [1,2,3];
-            function list_set (node, array) {
-                for (var i = 0; i < array.length; i++) {
-                    var val = array[i];
-                    $(node).append("<li data-val='"+val+"'>"+val+"</li>");
-                }
-                return node;
-            }
-            var children = $(list_set(ul, axis)).children()
-            for (var i = children.length - 1; i >= 0; i--) {
-                var node = children[i]
-                $(node).append("<ul><li data-val=0>e</li></ul>")
-                node = $(node).children().first()
-                list_set(node, floor)
-            };
-            return ul
-        }
-        $(function () {
-            <!--Script-->
-            floors_func($('#select_floor'))
-                .scroller({
-                    preset : 'list',
-                    labels : ['axis', 'floor'],
-                    mode: 'scroller',
-                    display: 'inline',
-                    theme: 'sense-ui',
-                    defaultValue: ['x', 0],
-                    onChange:function(valueText, inst){
-                    	//valueText是选中的值
-                    },
-                })
-        });
     </script>
 </head>
 <body class="graydient">
@@ -113,16 +80,16 @@
 		<h2>Cubers broken</h2>
 	</div>
 
-	<div class="floor_selector">
+	<div id="floor_selector">
 		<ul id="select_floor"></ul>
 	</div>
 	<div id="rotate_factor" class="rorate">
 		<span id="simple_rorate" class="simple">
-			<a href="javascript:;">+π/2</a>
-			<a href="javascript:;">-π/2</a>
+			<a href="javascript:operate(90)">+π/2</a>
+			<a href="javascript:operate(-90);">-π/2</a>
 		</span>
 		<span id="contra_rorate">
-			<a href="javascript:;">π</a>
+			<a href="javascript:operate(180);">π</a>
 		</span>
 	</div>
 </body>
