@@ -292,5 +292,9 @@
 			]
 		}
 	},
-	"fullscreen": true
+	"fullscreen": true,
+	"unpackage":[
+	  "css/wp_icons.png",
+	  "css/wp_icons_light.png"
+	]
 }

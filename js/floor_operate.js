@@ -41,9 +41,9 @@ operator.rorate = function(vdeg){
 	var floor = this.select_floor;
 	var command = {
 		'x 0':'X',
-		'x 1':'L',
+		'x 1':'R',
 		'x 2':'M',
-		'x 3':'R',
+		'x 3':'L',
 		
 		'y 0':'Y',
 		'y 1':'D',
