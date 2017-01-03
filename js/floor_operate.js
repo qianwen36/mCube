@@ -1,10 +1,15 @@
 var operator = {
-	select_floor:"x 0",
+	select_floor:"Command:X",
 	rorate:"function(vdeg){}"
 }
 operator.floors = function(ul) {
-    var axis = ['x', 'y', 'z'];
-    var floor= [1,2,3];
+	var config = {
+		x : ['X', 'F', 'U', 'B', 'D', 'M'],
+		y : ['Y', 'R', 'F', 'L', 'B', 'E'],
+		z : ['Z', 'U', 'R', 'D', 'L', 'S']
+	};
+	for (axis in config)
+		$(ul).append("<li data-val='Command:'>"+axis+"</li>");
     function list_set (node, array) {
         for (var i = 0; i < array.length; i++) {
             var val = array[i];
@@ -12,12 +17,13 @@ operator.floors = function(ul) {
         }
         return node;
     }
-    var children = $(list_set(ul, axis)).children()
+    var children = $(ul).children()
     for (var i = children.length - 1; i >= 0; i--) {
         var node = children[i]
-        $(node).append("<ul><li data-val=0>e</li></ul>")
+        var array = config[node.innerText];
+        $(node).append("<ul></ul>")
         node = $(node).children().first()
-        list_set(node, floor)
+        list_set(node, array)
     };
     return ul
 }
@@ -26,7 +32,7 @@ $(function () {
     operator.floors($('#select_floor'))
         .scroller({
             preset : 'list',
-            labels : ['axis', 'floor'],
+            labels : ['axis', 'command'],
             mode: 'scroller',
             display: 'inline',
             theme: 'sense-ui',
@@ -38,24 +44,8 @@ $(function () {
 });
 
 operator.rorate = function(vdeg){
-	var floor = this.select_floor;
-	var command = {
-		'x 0':'X',
-		'x 1':'R',
-		'x 2':'M',
-		'x 3':'L',
-		
-		'y 0':'Y',
-		'y 1':'D',
-		'y 2':'E',
-		'y 3':'U',
-		
-		'z 0':'Z',
-		'z 1':'F',
-		'z 2':'S',
-		'z 3':'B',
-	};
-	var twist = new ERNO.Twist(command[floor], vdeg);
+	var cmd = this.select_floor.split(' ')[1];
+	var twist = new ERNO.Twist(cmd, vdeg);
 	cube.immediateTwist(twist)
 }
 
