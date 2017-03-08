@@ -1,5 +1,5 @@
 var operator = {
-	select_floor:"Command:X",
+	select_floor:"Command(x): X",
 	rorate:"function(vdeg){}"
 }
 operator.floors = function(ul) {
@@ -9,7 +9,7 @@ operator.floors = function(ul) {
 		z : ['Z', 'U', 'R', 'D', 'L', 'S']
 	};
 	for (axis in config)
-		$(ul).append("<li data-val='Command:'>"+axis+"</li>");
+		$(ul).append("<li data-val='Command("+axis+").'>"+axis+"</li>");
     function list_set (node, array) {
         for (var i = 0; i < array.length; i++) {
             var val = array[i];
