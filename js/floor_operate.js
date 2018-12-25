@@ -4,9 +4,9 @@ var operator = {
 }
 operator.floors = function(ul) {
 	var config = {
-		x : ['X', 'F', 'U', 'B', 'D', 'M'],
-		y : ['Y', 'R', 'F', 'L', 'B', 'E'],
-		z : ['Z', 'U', 'R', 'D', 'L', 'S']
+		x : ['X', 'R', 'M', 'L'],
+		y : ['Y', 'U', 'E', 'D'],
+		z : ['Z', 'F', 'S', 'B']
 	};
 	for (axis in config)
 		$(ul).append("<li data-val='Command("+axis+").'>"+axis+"</li>");
